@@ -1,0 +1,31 @@
+---
+# vim: syn=yaml.eruby
+driver:
+  name: vagrant
+  gui: false
+  linked_clone: true
+
+provisioner:
+  name: chef_zero
+  product_name: chefdk
+  always_update_cookbooks: true
+  attributes:
+    tlg_workstation:
+      user: 'vagrant'
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: bento/ubuntu-16.04
+  <% if /darwin/i =~ RUBY_PLATFORM %>
+  - name: AndrewDryga/vagrant-box-osx
+    driver:
+      customize:
+        memory: 4096
+  <% end %>
+
+suites:
+  - name: tlg_workstation
+    run_list:
+      - 'recipe[tlg_workstation::default]'

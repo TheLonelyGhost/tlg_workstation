@@ -1,0 +1,9 @@
+---
+require:
+  - cookstyle
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
