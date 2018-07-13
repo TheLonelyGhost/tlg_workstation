@@ -9,7 +9,7 @@ groupname = node['tlg_workstation']['group']
 home = ::File.expand_path("~#{username}/")
 
 directory "#{home}/.ssh" do
-  mode '0700'
+  mode '0755'
   owner username
   group groupname
 
@@ -23,5 +23,5 @@ template "#{home}/.ssh/config" do
   owner username
   group groupname
 
-  action :create
+  action :create_if_missing
 end
