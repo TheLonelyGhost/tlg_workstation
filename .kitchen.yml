@@ -11,7 +11,7 @@ provisioner:
   always_update_cookbooks: true
   attributes:
     tlg_workstation:
-      user: 'vagrant'
+      username: 'vagrant'
 
 verifier:
   name: inspec
